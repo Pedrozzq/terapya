@@ -298,20 +298,6 @@
 
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--delay,0ms)}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    /* Faixa de preview para aprovação (Saturno NFC) */
-    .preview-bar{
-      position:relative;z-index:50;
-      display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 10px;
-      padding:9px 16px;text-align:center;
-      font:700 11px/1.3 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;
-      color:#04181b;
-      background:linear-gradient(90deg,var(--purple),#8b5cf6);
-    }
-    .preview-bar b{font-weight:800}
-    .preview-bar .dot{width:7px;height:7px;border-radius:50%;background:#04181b;animation:previewBlink 1.6s ease-in-out infinite}
-    .preview-bar .sep{opacity:.5}
-    @keyframes previewBlink{0%,100%{opacity:1}50%{opacity:.25}}
-    .photo-note{margin:0;padding:5px 16px;text-align:center;font-size:10.5px;letter-spacing:.04em;color:var(--muted);background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
 
     /* Menu inferior mobile (estilo Instagram): ícones coloridos com nome
        e o drink central destacado no visual da logo Terapya */
@@ -364,13 +350,6 @@
   </style>
 </head>
 <body>
-  <div class="preview-bar" role="note">
-    <span class="dot" aria-hidden="true"></span>
-    <span><b>Modelo preview</b> para aprovação</span>
-    <span class="sep" aria-hidden="true">•</span>
-    <span>Desenvolvimento Saturno NFC</span>
-  </div>
-  <p class="photo-note">Algumas fotos podem ser genéricas e meramente ilustrativas.</p>
   <div class="ambient-orb orb-1"></div>
   <div class="ambient-orb orb-2"></div>
 
@@ -594,7 +573,7 @@
           </div>
         </article>
         <article class="prod-card">
-          <div class="prod-media"><img src="img/cardapio/thumb/drink-01.jpg" data-full="img/drink-01.webp" alt="Ritalina Red"></div>
+          <div class="prod-media"><img src="img/cardapio/thumb/ritalina-red.jpg" data-full="img/cardapio/ritalina-red.jpg" alt="Ritalina Red"></div>
           <div class="prod-info">
             <div class="prod-top"><h3>Ritalina Red</h3><span class="prod-price">R$ 25,00</span></div>
             <p class="prod-tagline">"Estimulante, colorido e cheio de energia."</p>
@@ -851,7 +830,7 @@
           </div>
         </article>
         <article class="prod-card">
-          <div class="prod-media"><img src="img/cardapio/thumb/jack.jpg" data-full="img/bebidas/jack.jpg" alt="Jack Daniel's + 5 Red Bull" loading="lazy"></div>
+          <div class="prod-media"><img src="img/cardapio/thumb/combo-jack.jpg" data-full="img/bebidas/combo-jack.jpg" alt="Jack Daniel's + 5 Red Bull" loading="lazy"></div>
           <div class="prod-info">
             <div class="prod-top"><h3>Jack Daniel's + 5 Red Bull</h3><span class="prod-price">R$ 325,00</span></div>
             <p class="prod-tagline">Sabor apple</p>
@@ -888,6 +867,7 @@
 
     <footer class="menu-footer">
       Preços sujeitos a alteração sem aviso prévio. Taxa de serviço opcional de 10%.<br>
+      Algumas fotos podem ser genéricas e meramente ilustrativas.<br>
       © 2026 TERAPYA BAR — Rua José Trindade, 5, Bauxita, Ouro Preto/MG
     </footer>
   </main>
