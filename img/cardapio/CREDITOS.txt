@@ -1,7 +1,6 @@
 Fotos ilustrativas (placeholder) do cardápio — licenças Creative Commons.
 Substituir pelas fotos reais dos produtos antes da publicação.
 
-chorizo-500.jpg — ".El bife de Chorizo con Papas Fritas." por Denise Mayumi (BY 2.0) — https://www.flickr.com/photos/29584669@N00/3102439449
 
 Geradas por IA (ChatGPT), ilustrativas, a partir das fotos do bar:
 antidepressiva.jpg, dr-freud.jpg, efeito-placebo.jpg, fluxo-cognitivo.jpg, ginzepam.jpg, psicologo.jpg, rivotril.jpg, serotonina.jpg, terapya-intensiva.jpg, amstel-ultra.jpg, heineken-zero.jpg
@@ -10,3 +9,4 @@ Também geradas por IA, nesta pasta: amstel-600.jpg, heineken-600.jpg, ritalina-
 Também geradas por IA, em ../bebidas/: combo-gin-redbull.jpg, combo-gin-tonica.jpg, combo-jack.jpg, combo-redlabel.jpg, vodka.jpg
 Também geradas por IA, nesta pasta: carne-panela.jpg, chopp-amstel-500.jpg, chorizo-terapya.jpg, familia.jpg, pastel-angu.jpg
 Também geradas por IA, nesta pasta: fritas.jpg, tilapia.jpg
+Também gerada por IA, nesta pasta: chorizo-500.jpg

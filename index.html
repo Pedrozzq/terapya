@@ -654,6 +654,24 @@
       padding:0;
     }
 
+    /* GALERIAS DE FOTOS E VÍDEOS (antes do rodapé) */
+    .foto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .foto-tile{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:18px;background:#111;border:1px solid rgba(255,255,255,.06)}
+    .foto-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+    .foto-tile:hover img{transform:scale(1.04)}
+    .video-grid{
+      display:grid;grid-auto-flow:column;grid-auto-columns:62%;gap:10px;
+      overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+      -webkit-overflow-scrolling:touch;
+    }
+    .video-grid::-webkit-scrollbar{display:none}
+    .video-tile{aspect-ratio:9/16;overflow:hidden;border-radius:18px;background:#111;border:1px solid rgba(255,255,255,.06);scroll-snap-align:start}
+    .video-tile video{display:block;width:100%;height:100%;object-fit:cover}
+    @media(min-width:760px){
+      .foto-grid{grid-template-columns:repeat(3,1fr);gap:14px}
+      .video-grid{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(3,1fr);gap:14px;overflow:visible}
+    }
+
     /* PARALLAX GALLERY — efeito 3D de "unfurl" ao rolar, com as fotos do bar */
     .parallax-wrap{
       position:relative;
@@ -1337,36 +1355,36 @@
               <div class="parallax-vignette h"></div>
               <div class="parallax-grid">
                 <div class="parallax-col">
-                  <div class="parallax-item"><img loading="lazy" src="img/chapa-mesa.webp" alt="Chapa Terapya servida na mesa"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/drink-01.webp" alt="Drink de terapia"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-9.jpg" alt="Drink no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/chapa-mesa.webp" alt="Chapa Terapya servida na mesa"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/drink-01.webp" alt="Drink de terapia"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-9.jpg" alt="Drink no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-01.webp" alt="Aperol Spritz sob o neon do Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-02.webp" alt="Amigos brindando no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-03.webp" alt="Picanha na chapa do Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-04.webp" alt="Cliente com drink no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-05.webp" alt="Brinde sobre o balde de cervejas"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-06.webp" alt="Drink servido na mesa do Terapya"></div>
                 </div>
                 <div class="parallax-col">
-                  <div class="parallax-item"><img loading="lazy" src="img/chapa-terapya.webp" alt="Chapa Terapya Mista"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/drink-02.webp" alt="Drink de terapia"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/Screenshot_2.png" alt="Cliente com drink no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/chapa-terapya.webp" alt="Chapa Terapya Mista"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/drink-02.webp" alt="Drink de terapia"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/Screenshot_2.png" alt="Cliente com drink no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-07.webp" alt="Picanha fatiada com acompanhamentos"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-08.webp" alt="Bartender do Terapya com drink"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-09.webp" alt="Drink sob o neon do Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-10.webp" alt="Amigas brindando no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-11.webp" alt="Drink com limão no balcão"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-12.webp" alt="Chopp na caneca de caveira"></div>
                 </div>
                 <div class="parallax-col">
-                  <div class="parallax-item"><img loading="lazy" src="img/picanha.webp" alt="Picanha Argentina do Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-4.jpg" alt="Momento no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/Screenshot_1.png" alt="Drink no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/picanha.webp" alt="Picanha Argentina do Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-4.jpg" alt="Momento no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/Screenshot_1.png" alt="Drink no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-13.webp" alt="Brinde com chopp no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-14.webp" alt="Costelinha com fritas na chapa"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-15.webp" alt="Drink laranja sob o neon do Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-16.webp" alt="Grupo comemorando no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-17.webp" alt="Bartender preparando drink"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-18.webp" alt="Clientes no salão com letreiro neon"></div>
                 </div>
                 <div class="parallax-col">
-                  <div class="parallax-item"><img loading="lazy" src="img/torresmo.webp" alt="Torresmo da Casa"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-8.jpg" alt="Momento no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/torresmo.webp" alt="Torresmo da Casa"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-8.jpg" alt="Momento no Terapya"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/torresmo.webp" alt="Torresmo da Casa"></div>
-                  <div class="parallax-item"><img loading="lazy" src="img/instagram/post-8.jpg" alt="Momento no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-19.webp" alt="Picanha com fritas e arroz"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-20.webp" alt="Cliente com drink na mesa"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-21.webp" alt="Amigas reunidas no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-22.webp" alt="Cliente com chopp no Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-23.webp" alt="Salão cheio do Terapya"></div>
+                  <div class="parallax-item"><img loading="lazy" src="img/galeria/parallax-24.webp" alt="Picanha na tábua, vista de cima"></div>
                 </div>
               </div>
             </div>
@@ -1410,6 +1428,96 @@
         </div>
         <span class="arrow">↗</span>
       </a>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">EM MOVIMENTO</div>
+          <h2>A noite, em poucos segundos.</h2>
+          <p>Um pouco do que acontece por aqui, do balcão à chapa.</p>
+        </div>
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-casa-cheia.webp" src="video/galeria/casa-cheia.mp4" aria-label="Casa cheia em noite no Terapya"></video></div>
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-neon.webp" src="video/galeria/neon.mp4" aria-label="Salão com o letreiro neon"></video></div>
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-picanha.webp" src="video/galeria/picanha.mp4" aria-label="Picanha na chapa"></video></div>
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-costela.webp" src="video/galeria/costela.mp4" aria-label="Costelinha desfiando no garfo"></video></div>
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-aperol.webp" src="video/galeria/aperol.mp4" aria-label="Preparo de drink no balcão"></video></div>
+        <div class="video-tile reveal"><video muted loop playsinline preload="none" poster="img/galeria/video-brinde.webp" src="video/galeria/brinde.mp4" aria-label="Cliente com drink em frente ao letreiro"></video></div>
+      </div>
+    </section>
+
+    <section class="section" id="casa">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">A CASA</div>
+          <h2>Neon aceso, casa cheia.</h2>
+          <p>Salão, varanda e aquele movimento que só o Terapya tem.</p>
+        </div>
+      </div>
+      <div class="foto-grid">
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-01.webp" alt="Fachada do Terapya com mesa posta"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-02.webp" alt="Clientes à mesa no salão"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-03.webp" alt="Salão cheio com letreiro neon ao fundo"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-04.webp" alt="Cliente na mesa da varanda"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-05.webp" alt="Rua em frente ao Terapya à noite"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/casa-06.webp" alt="Amigos na mesa em frente ao neon"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="chapa">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">DA CHAPA</div>
+          <h2>Da chapa direto pra mesa.</h2>
+          <p>Picanha, costelinha e fritas pra dividir (ou não).</p>
+        </div>
+      </div>
+      <div class="foto-grid">
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-01.webp" alt="Picanha fatiada com fritas"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-02.webp" alt="Picanha na tábua com acompanhamentos"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-03.webp" alt="Fritas com queijo e bacon na chapa"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-04.webp" alt="Costelinha desfiando com fritas"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-05.webp" alt="Picanha na chapa com arroz e fritas"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/chapa-06.webp" alt="Costelinha na tábua, vista de cima"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="drinks">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">DO BALCÃO</div>
+          <h2>Drinks e chopp no capricho.</h2>
+          <p>Do preparo no balcão ao brinde na mesa.</p>
+        </div>
+      </div>
+      <div class="foto-grid">
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-01.webp" alt="Bartender finalizando drink"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-02.webp" alt="Bartender apresentando drink e garrafa"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-03.webp" alt="Cliente brindando com caneca de chopp"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-04.webp" alt="Cliente com drink vermelho"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-05.webp" alt="Cliente mostrando drink com guarnição"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/drinks-06.webp" alt="Caneca de chopp em primeiro plano"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="galera">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">QUEM FAZ A NOITE</div>
+          <h2>A melhor parte é a galera.</h2>
+          <p>Quem vem, volta. E geralmente traz mais gente.</p>
+        </div>
+      </div>
+      <div class="foto-grid">
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-01.webp" alt="Amigas brindando sob o letreiro"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-02.webp" alt="Casal brindando com chopp"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-03.webp" alt="Amigos brindando na mesa"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-04.webp" alt="Brinde sobre os baldes de cerveja"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-05.webp" alt="Amigos reunidos em frente à varanda"></figure>
+        <figure class="foto-tile reveal"><img loading="lazy" src="img/galeria/galera-06.webp" alt="Amigos posando em frente ao letreiro"></figure>
+      </div>
     </section>
 
     <footer>
@@ -1655,6 +1763,21 @@
         reelVideo.muted = !reelVideo.muted;
         reelMuteBtn.textContent = reelVideo.muted ? '🔇' : '🔊';
       });
+    }
+
+    // VÍDEOS DA GALERIA — mudos, tocam só enquanto aparecem na tela
+    const videosGaleria = [...document.querySelectorAll('#videoGrid video')];
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+      // quem pede menos animação escolhe quando assistir
+      videosGaleria.forEach(v => { v.controls = true; });
+    } else if('IntersectionObserver' in window){
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.play().catch(() => {});
+          else entry.target.pause();
+        });
+      }, {threshold:.45});
+      videosGaleria.forEach(v => videoObserver.observe(v));
     }
 
     // FEEDBACK MOBILE
