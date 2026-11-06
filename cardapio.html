@@ -323,6 +323,10 @@
       .bottom-nav a:active svg{transform:scale(.86)}
       .bottom-nav a.active svg{opacity:1;stroke-width:2.3;filter:drop-shadow(0 0 6px var(--c))}
       .bottom-nav a.active .bottom-nav__label{color:var(--text)}
+      /* Ícones coloridos (Cervejas e Combos): maiores para ler bem, sem mudar a altura do menu */
+      .bottom-nav svg.nav-ico{width:28px;height:28px;margin:-2px 0;opacity:.95}
+      .bottom-nav svg.nav-ico--dupla{width:32px}
+      .bottom-nav a.active svg.nav-ico{opacity:1}
       .bottom-nav__avatar{width:26px;height:26px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#22D3EE,#FF3B4E)}
       .bottom-nav__avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:1.5px solid #050505}
       /* Drink central: quadrado preto arredondado, taça neon ciano e palito vermelho */
@@ -877,8 +881,8 @@
     <a href="index.html" style="--c:#22D3EE"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg><span class="bottom-nav__label">Início</span></a>
     <a href="#especiais" data-spy="especiais entradas porcoes refeicoes guarnicoes" style="--c:#FF8A1E"><svg viewBox="0 0 24 24"><path d="M7 2v20M4 2v6a3 3 0 0 0 6 0V2M17 22V2c-2.5 1-4 4-4 8v4h4"/></svg><span class="bottom-nav__label">Comidas</span></a>
     <a href="#drinks" class="bottom-nav__center" data-spy="drinks doses"><span class="bottom-nav__logo"><svg viewBox="0 0 32 32"><path class="glass" d="M5 8h22L16 19.5Z"/><path class="glass" d="M16 19.5V27M11 27h10"/><path class="stick" d="M23.5 3.5 17.5 12"/><circle class="olive" cx="21.6" cy="6.3" r="2.3"/></svg></span><span class="bottom-nav__label">Drinks</span></a>
-    <a href="#chopp" data-spy="chopp" style="--c:#FFC640"><svg viewBox="0 0 24 24"><path d="M5 8h10v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M15 11h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2M5 8a2.5 2.5 0 0 1 3-3.5A3 3 0 0 1 13 5a2 2 0 0 1 2 3M9 12v5M12 12v5"/></svg><span class="bottom-nav__label">Cervejas</span></a>
-    <a href="#combos" data-spy="combos sucos" style="--c:#FF4D6D"><svg viewBox="0 0 24 24"><path d="M3 9h18v3a9 9 0 0 1-18 0Z"/><path d="M8 5c0-1 1-1 1-2M12 5c0-1 1-1 1-2M16 5c0-1 1-1 1-2"/></svg><span class="bottom-nav__label">Combos</span></a>
+    <a href="#chopp" data-spy="chopp" style="--c:#2FD36F"><svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 1.5h4v1.2h-.4v4.1c0 1.4 2.4 2.5 2.4 5.2V21a1.6 1.6 0 0 1-1.6 1.6H9.6A1.6 1.6 0 0 1 8 21v-9c0-2.7 2.4-3.8 2.4-5.2V2.7H10Z" fill="#0B7A3B" stroke="#4BE08A" stroke-width="1.1"/><rect x="8.5" y="12.2" width="7" height="6.2" fill="#F5F5F0" stroke="none"/><polygon points="12,12.7 12.56,14.43 14.38,14.43 12.91,15.5 13.47,17.22 12,16.16 10.53,17.22 11.09,15.5 9.62,14.43 11.44,14.43" fill="#E2231A" stroke="none"/></svg><span class="bottom-nav__label">Cervejas</span></a>
+    <a href="#combos" data-spy="combos sucos" style="--c:#FF4D6D"><svg class="nav-ico nav-ico--dupla" viewBox="0 0 32 28" aria-hidden="true"><rect x="6.2" y="1" width="5.6" height="3.4" rx=".7" fill="#D7DCE4" stroke="none"/><path d="M6.8 4.4h4.4v2.2c0 1 3.9 1.6 3.9 4.6V25a1.5 1.5 0 0 1-1.5 1.5H4.4A1.5 1.5 0 0 1 2.9 25V11.2c0-3 3.9-3.6 3.9-4.6Z" fill="#0F5A35" stroke="#5FD08F" stroke-width="1.1"/><rect x="3.4" y="16.2" width="11.2" height="6.2" fill="#EFE6CC" stroke="none"/><text x="9" y="20.4" text-anchor="middle" textLength="10.2" lengthAdjust="spacingAndGlyphs" font-family="Manrope,Arial,sans-serif" font-size="3" font-weight="800" fill="#0F3D26" stroke="none">TANQUERAY</text><circle cx="9" cy="12.6" r="3" fill="#D81E2C" stroke="#F2C14E" stroke-width=".6"/><path d="M19.5 8.5l1-2.2h7l1 2.2v17l-1 1.2h-7l-1-1.2Z" fill="#D7DCE4" stroke="#EEF1F5" stroke-width=".9"/><path d="M19.5 8.5l1-2.2H24v20.4h-3.5l-1-1.2Z" fill="#1E3F9E" stroke="none"/><circle cx="24" cy="16.5" r="3.5" fill="#FFC400" stroke="none"/><path d="M20.4 18.6l2.9-2.6-.3 2.6ZM27.6 18.6l-2.9-2.6.3 2.6Z" fill="#E2231A" stroke="none"/></svg><span class="bottom-nav__label">Combos</span></a>
   </nav>
   <script>
     /* Menu inferior: marca o ícone da seção visível na tela */
