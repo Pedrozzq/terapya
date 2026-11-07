@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="description" content="Cardápio completo do Terapya Bar — chapas, picanhas, porções, entradas e drinks de terapia com nomes que só o Terapya tem coragem de dar." />
+  <title>CARDÁPIO — Terapya Bar</title>
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:#141418;
+      --text:#F5F5F5;
+      --muted:rgba(245,245,245,.62);
+      --line:rgba(255,255,255,.08);
+      --purple:#22D3EE;
+      --blue:#06B6D4;
+      --magenta:#FF3B4E;
+      --radius:22px;
+      --ease:cubic-bezier(.22,.61,.36,1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background-color:#050505;color-scheme:dark}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(34,211,238,.09), transparent 26rem),
+        radial-gradient(circle at 90% 8%, rgba(255,59,78,.06), transparent 24rem),
+        linear-gradient(180deg, #050505 0%, #070708 35%, #050505 100%) #050505;
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    ::selection{background:rgba(34,211,238,.35);color:#fff}
+
+    .ambient-orb{
+      position:fixed;width:330px;height:330px;border-radius:50%;
+      filter:blur(90px);opacity:.12;pointer-events:none;z-index:0;
+      animation:orbMove 14s ease-in-out infinite alternate;
+    }
+    .orb-1{background:var(--purple);top:5%;left:-120px}
+    .orb-2{background:var(--magenta);right:-150px;top:38%;animation-delay:-6s}
+    @keyframes orbMove{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(40px,30px,0) scale(1.1)}}
+
+    .site-shell{width:min(100%,980px);margin-inline:auto;padding:0 18px 90px;position:relative;z-index:2}
+
+    /* HEADER */
+    header.menu-header{padding:26px 0 18px;position:relative;z-index:2}
+    .back-link{
+      display:inline-flex;align-items:center;gap:8px;
+      font:600 12px/1 Manrope,sans-serif;letter-spacing:.03em;
+      color:rgba(255,255,255,.6);padding:9px 14px 9px 10px;
+      border:1px solid rgba(255,255,255,.09);border-radius:999px;
+      transition:.3s var(--ease);
+    }
+    .back-link:hover{color:#fff;border-color:rgba(34,211,238,.32);background:rgba(255,255,255,.03)}
+    .menu-hero{text-align:center;margin-top:26px}
+    .menu-hero .brand-mark{
+      width:64px;height:64px;margin:0 auto 16px;border-radius:19px;
+      display:grid;place-items:center;overflow:hidden;
+      background:#000;border:1px solid rgba(255,255,255,.1);
+      box-shadow:0 14px 40px rgba(0,0,0,.4),0 0 34px rgba(34,211,238,.08);
+    }
+    .menu-hero .brand-mark img{width:100%;height:100%;object-fit:cover}
+    .menu-hero .eyebrow{
+      font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;
+      color:rgba(255,255,255,.42);margin-bottom:12px;
+    }
+    .menu-hero h1{
+      margin:0;font:700 clamp(32px,7vw,52px)/1.02 Sora,sans-serif;letter-spacing:-.045em;
+    }
+    .brand-glow{
+      background:linear-gradient(90deg,
+        var(--logo-c1,#6FF3FF), var(--logo-c2,#FF4D3D),
+        var(--logo-c1,#6FF3FF), var(--logo-c2,#FF4D3D));
+      background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+      animation:brandGlow 6s linear infinite;
+      filter:drop-shadow(0 0 14px color-mix(in srgb, var(--logo-c1,#6FF3FF) 45%, transparent));
+    }
+    @keyframes brandGlow{to{background-position:300% center}}
+    @media(prefers-reduced-motion:reduce){.brand-glow{animation:none}}
+    .menu-hero p{max-width:480px;margin:14px auto 0;color:var(--muted);font-size:13px;line-height:1.7}
+
+    /* CATEGORY NAV */
+    .cat-nav{
+      margin-top:28px;
+      display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;
+      scrollbar-width:none;
+    }
+    .cat-nav::-webkit-scrollbar{display:none}
+    .cat-nav a{
+      flex:none;
+      padding:9px 15px;border-radius:999px;
+      font:600 11px/1 Manrope,sans-serif;letter-spacing:.03em;text-transform:uppercase;
+      color:rgba(255,255,255,.6);
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.025);
+      transition:.25s var(--ease);
+      white-space:nowrap;
+    }
+    .cat-nav a:hover,.cat-nav a.active{color:#04181b;background:linear-gradient(90deg,var(--purple),var(--blue));border-color:transparent}
+
+    /* SECTIONS */
+    .cat-section{padding:56px 0 0;scroll-margin-top:18px}
+    .cat-heading{margin-bottom:20px}
+    .cat-heading .eyebrow{
+      font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;
+      color:rgba(255,255,255,.4);margin-bottom:6px;
+    }
+    .cat-heading h2{margin:0;font:700 clamp(22px,5vw,32px)/1.1 Sora,sans-serif;letter-spacing:-.03em}
+    .cat-heading p{margin:8px 0 0;color:var(--muted);font-size:12.5px;line-height:1.6;max-width:560px}
+
+    /* PRODUCT CARDS (rich) */
+    .prod-grid{display:grid;gap:12px;grid-template-columns:1fr}
+    @media(min-width:680px){.prod-grid{grid-template-columns:1fr 1fr}}
+    .prod-card{
+      display:grid;grid-template-columns:84px 1fr;gap:14px;
+      padding:12px;border-radius:20px;
+      border:1px solid rgba(255,255,255,.075);
+      background:rgba(255,255,255,.026);
+      transition:.3s var(--ease);
+    }
+    .prod-card:hover{border-color:rgba(34,211,238,.26);background:rgba(255,255,255,.04);transform:translateY(-2px)}
+    .prod-media{
+      width:84px;height:84px;border-radius:14px;overflow:hidden;
+      background:linear-gradient(160deg,rgba(34,211,238,.14),rgba(255,59,78,.10));
+      display:grid;place-items:center;border:1px solid rgba(255,255,255,.07);
+    }
+    .prod-media img{width:100%;height:100%;object-fit:cover}
+    .prod-media .ph{font-size:30px;filter:saturate(.9) opacity(.92)}
+    .prod-info{display:flex;flex-direction:column;justify-content:center;min-width:0}
+    .prod-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+    .prod-top h3{margin:0;font:650 13.5px/1.25 Manrope,sans-serif;letter-spacing:.01em}
+    .prod-price{
+      flex:none;font:700 13px/1 Sora,sans-serif;letter-spacing:-.01em;
+      color:#7CF2FF;white-space:nowrap;
+    }
+    .prod-tagline{margin:4px 0 0;font:600 10.5px/1.3 Manrope,sans-serif;color:rgba(255,255,255,.5);font-style:italic}
+    .prod-desc{margin:4px 0 0;font-size:11px;line-height:1.5;color:rgba(255,255,255,.48)}
+
+    /* COMPACT LIST (simple items) */
+    .compact-list{
+      border:1px solid rgba(255,255,255,.07);border-radius:20px;
+      background:rgba(255,255,255,.02);overflow:hidden;
+    }
+    .compact-row{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.055);
+      transition:background .25s ease;
+    }
+    .compact-row:last-child{border-bottom:none}
+    .compact-row:hover{background:rgba(255,255,255,.025)}
+    .compact-row strong{font:600 12.5px/1.3 Manrope,sans-serif;letter-spacing:.01em}
+    .compact-row .sub{display:block;margin-top:2px;font-size:10.5px;color:rgba(255,255,255,.42)}
+    .compact-row .price{flex:none;font:700 12.5px/1 Sora,sans-serif;color:#7CF2FF;white-space:nowrap}
+
+    .note-card{
+      margin-top:14px;padding:14px 16px;border-radius:16px;
+      border:1px dashed rgba(255,255,255,.14);
+      background:rgba(255,255,255,.018);
+      font-size:11px;line-height:1.6;color:rgba(255,255,255,.5);
+    }
+
+    /* CTA */
+    .menu-cta{
+      margin-top:74px;padding:30px 24px;border-radius:28px;text-align:center;
+      background:linear-gradient(160deg,rgba(34,211,238,.10),rgba(255,255,255,.02) 60%);
+      border:1px solid rgba(34,211,238,.20);
+    }
+    .menu-cta h2{margin:0 0 8px;font:700 clamp(20px,5vw,28px)/1.15 Sora,sans-serif;letter-spacing:-.03em}
+    .menu-cta p{margin:0 0 18px;color:var(--muted);font-size:12.5px}
+    .menu-cta a{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:13px 22px;border-radius:999px;
+      background:linear-gradient(90deg,var(--purple),var(--blue));
+      color:#04181b;font:700 12.5px/1 Manrope,sans-serif;letter-spacing:.02em;
+    }
+    footer.menu-footer{margin-top:40px;padding:26px 0 10px;text-align:center;color:rgba(255,255,255,.32);font-size:10.5px}
+
+    /* PRODUCT DETAIL (premium modal) */
+    .prod-card{cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+    .prod-card:focus-visible{outline:none;border-color:rgba(34,211,238,.5);box-shadow:0 0 0 3px rgba(34,211,238,.18)}
+    .prod-card:active{transform:scale(.985)}
+    .prod-media img{transition:transform .6s var(--ease)}
+    .prod-card:hover .prod-media img{transform:scale(1.06)}
+    .prod-card.is-source .prod-media{visibility:hidden}
+
+    body.pm-lock{overflow:hidden}
+    .pm{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;visibility:hidden;pointer-events:none}
+    .pm.open{visibility:visible;pointer-events:auto}
+    .pm-backdrop{
+      position:absolute;inset:0;
+      background:radial-gradient(circle at 50% 30%,rgba(8,20,24,.72),rgba(0,0,0,.9));
+      -webkit-backdrop-filter:blur(14px) saturate(120%);backdrop-filter:blur(14px) saturate(120%);
+      opacity:0;transition:opacity .45s var(--ease);
+    }
+    .pm.open .pm-backdrop{opacity:1}
+    .pm-dialog{
+      position:relative;width:min(100%,440px);max-height:calc(100dvh - 32px);
+      display:flex;flex-direction:column;overflow:hidden;
+      border-radius:28px;
+      background:linear-gradient(180deg,#101014 0%,#0a0a0c 100%);
+      border:1px solid rgba(255,255,255,.09);
+      box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(34,211,238,.06),0 0 80px rgba(34,211,238,.07);
+      opacity:0;transition:opacity .45s var(--ease);
+    }
+    .pm.open .pm-dialog{opacity:1}
+    .pm-dialog::before{
+      content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+      background:linear-gradient(160deg,rgba(124,242,255,.35),transparent 30%,transparent 70%,rgba(255,59,78,.25));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;
+    }
+    .pm-media{
+      position:relative;flex:none;height:min(62dvh,520px);overflow:hidden;
+      background:linear-gradient(160deg,rgba(34,211,238,.16),rgba(255,59,78,.12));
+      display:grid;place-items:center;
+    }
+    .pm-media::before{
+      content:"";position:absolute;inset:-30px;pointer-events:none;
+      background:var(--pm-bg,none) center/cover no-repeat;
+      filter:blur(24px) brightness(.55) saturate(120%);
+    }
+    .pm-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+    .pm-media .pm-ph{font-size:120px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+    .pm-media::after{
+      content:"";position:absolute;inset:auto 0 0 0;height:14%;pointer-events:none;
+      background:linear-gradient(180deg,transparent,#101014);
+    }
+    .pm-media.hidden{visibility:hidden}
+    .pm-close{
+      position:absolute;top:14px;right:14px;z-index:4;
+      width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.16);color:#fff;cursor:pointer;
+      background:rgba(5,5,5,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+      font:400 20px/1 Inter,sans-serif;transition:.25s var(--ease);
+    }
+    .pm-close:hover{background:rgba(255,255,255,.12);transform:rotate(90deg)}
+    .pm-close:focus-visible{outline:2px solid #7CF2FF;outline-offset:2px}
+    .pm-body{position:relative;padding:14px 26px 26px;overflow-y:auto;z-index:2}
+    .pm-body > *{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+    .pm.open .pm-body > *{opacity:1;transform:none}
+    .pm.open .pm-body > :nth-child(1){transition-delay:.12s}
+    .pm.open .pm-body > :nth-child(2){transition-delay:.17s}
+    .pm.open .pm-body > :nth-child(3){transition-delay:.22s}
+    .pm.open .pm-body > :nth-child(4){transition-delay:.26s}
+    .pm.open .pm-body > :nth-child(5){transition-delay:.3s}
+    .pm.open .pm-body > :nth-child(6){transition-delay:.34s}
+    .pm-eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font:600 10px/1 Sora,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:rgba(124,242,255,.85);
+    }
+    .pm-eyebrow::before{content:"";width:22px;height:1px;background:linear-gradient(90deg,transparent,#7CF2FF)}
+    .pm-body h3{margin:12px 0 0;font:700 clamp(24px,6vw,30px)/1.1 Sora,sans-serif;letter-spacing:-.035em}
+    .pm-body h3 small{font-size:.5em;font-weight:500;opacity:.55;letter-spacing:0}
+    .pm-tagline{margin:10px 0 0;font:500 italic 14px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.62)}
+    .pm-tagline:empty{display:none}
+    .pm-rule{height:1px;margin:20px 0 18px;background:linear-gradient(90deg,rgba(124,242,255,.45),rgba(255,255,255,.08) 45%,transparent)}
+    .pm-desc{margin:0;font-size:14px;line-height:1.75;color:rgba(245,245,245,.78)}
+    .pm-foot{
+      margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);
+      display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+    }
+    .pm-label{display:block;font:600 9.5px/1 Sora,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:8px}
+    .pm-price{
+      font:700 26px/1 Sora,sans-serif;letter-spacing:-.03em;color:#7CF2FF;
+      text-shadow:0 0 24px rgba(34,211,238,.35);
+    }
+    .pm-mark{width:34px;height:34px;border-radius:10px;overflow:hidden;opacity:.85;border:1px solid rgba(255,255,255,.1)}
+    .pm-mark img{width:100%;height:100%;object-fit:cover}
+    .pm-ghost{position:fixed;z-index:101;margin:0;overflow:hidden;pointer-events:none;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+    @media(max-width:520px){
+      .pm{place-items:center;padding:10px}
+      .pm-dialog{border-radius:26px;max-height:calc(100dvh - 20px)}
+      .pm-media{height:min(58dvh,480px)}
+      .pm-body{padding:12px 22px 24px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .pm-dialog,.pm-backdrop,.pm-body > *{transition:opacity .2s linear!important;transform:none!important}
+      .prod-card:hover .prod-media img{transform:none}
+    }
+
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--delay,0ms)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* Menu inferior mobile (estilo Instagram): ícones coloridos com nome
+       e o drink central destacado no visual da logo Terapya */
+    .bottom-nav{display:none}
+    @media(max-width:679px){
+      .bottom-nav{
+        position:fixed;left:0;right:0;bottom:0;z-index:90;
+        display:flex;justify-content:space-around;align-items:flex-end;
+        height:calc(64px + env(safe-area-inset-bottom));
+        padding:0 4px env(safe-area-inset-bottom);
+        background:rgba(5,5,5,.92);
+        border-top:1px solid var(--line);
+        backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      }
+      .bottom-nav a{
+        position:relative;flex:1;height:64px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+        color:var(--c,#fff);
+        -webkit-tap-highlight-color:transparent;
+      }
+      .bottom-nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.78;transition:transform .2s var(--ease),opacity .2s ease,filter .2s ease}
+      .bottom-nav__label{font:600 10px/1 Manrope,sans-serif;letter-spacing:.02em;color:rgba(245,245,245,.5);white-space:nowrap;transition:color .2s ease}
+      .bottom-nav a:active svg{transform:scale(.86)}
+      .bottom-nav a.active svg{opacity:1;stroke-width:2.3;filter:drop-shadow(0 0 6px var(--c))}
+      .bottom-nav a.active .bottom-nav__label{color:var(--text)}
+      /* Ícones coloridos (Cervejas e Combos): maiores para ler bem, sem mudar a altura do menu */
+      .bottom-nav svg.nav-ico{width:28px;height:28px;margin:-2px 0;opacity:.95}
+      .bottom-nav svg.nav-ico--dupla{width:32px}
+      .bottom-nav a.active svg.nav-ico{opacity:1}
+      .bottom-nav__avatar{width:26px;height:26px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#22D3EE,#FF3B4E)}
+      .bottom-nav__avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:1.5px solid #050505}
+      /* Drink central: quadrado preto arredondado, taça neon ciano e palito vermelho */
+      .bottom-nav a.bottom-nav__center{justify-content:flex-end;padding-bottom:9px}
+      .bottom-nav__logo{
+        position:relative;width:54px;height:54px;margin-top:-26px;border-radius:17px;
+        display:grid;place-items:center;background:#000;
+        border:1px solid rgba(34,211,238,.35);
+        box-shadow:0 10px 28px rgba(0,0,0,.65),0 0 18px rgba(34,211,238,.28),inset 0 0 14px rgba(34,211,238,.08);
+        animation:navLogoGlow 3.2s ease-in-out infinite;
+        transition:transform .2s var(--ease);
+      }
+      .bottom-nav__center:active .bottom-nav__logo{transform:scale(.92)}
+      .bottom-nav .bottom-nav__logo svg{width:32px;height:32px;opacity:1;stroke-width:1.7;filter:none}
+      .bottom-nav__logo .glass{stroke:#22D3EE;filter:drop-shadow(0 0 3px #22D3EE) drop-shadow(0 0 8px rgba(34,211,238,.7))}
+      .bottom-nav__logo .stick{stroke:#FF3B4E;filter:drop-shadow(0 0 3px #FF3B4E)}
+      .bottom-nav__logo .olive{fill:#FF3B4E;stroke:none;filter:drop-shadow(0 0 4px #FF3B4E)}
+      .bottom-nav__center.active .bottom-nav__logo{border-color:rgba(34,211,238,.7)}
+      @keyframes navLogoGlow{
+        0%,100%{box-shadow:0 10px 28px rgba(0,0,0,.65),0 0 14px rgba(34,211,238,.22),inset 0 0 14px rgba(34,211,238,.06)}
+        50%{box-shadow:0 10px 28px rgba(0,0,0,.65),0 0 26px rgba(34,211,238,.45),inset 0 0 16px rgba(34,211,238,.14)}
+      }
+      body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+
+  <main class="site-shell">
+    <header class="menu-header">
+      <a class="back-link" href="index.html">← Voltar ao início</a>
+
+      <div class="menu-hero">
+        <div class="brand-mark"><img src="img/logo.jpg" alt="Terapya"></div>
+        <div class="eyebrow">TERAPYA BAR • OURO PRETO</div>
+        <h1><span class="brand-glow">Cardápio</span> completo.</h1>
+        <p>Chapas, picanhas, porções e drinks com nomes que só o Terapya tem coragem de dar — de Rivotril a Ginzepam.</p>
+      </div>
+
+      <nav class="cat-nav" id="catNav">
+        <a href="#especiais">Especiais</a>
+        <a href="#entradas">Entradas</a>
+        <a href="#porcoes">Porções</a>
+        <a href="#refeicoes">Refeições</a>
+        <a href="#guarnicoes">Guarnições</a>
+        <a href="#drinks">Drinks de terapia</a>
+        <a href="#chopp">Chopp & cervejas</a>
+        <a href="#doses">Doses</a>
+        <a href="#combos">Combos</a>
+        <a href="#sucos">Sucos & sem álcool</a>
+      </nav>
+    </header>
+
+    <!-- ESPECIAIS -->
+    <section class="cat-section reveal" id="especiais">
+      <div class="cat-heading">
+        <div class="eyebrow">Para compartilhar</div>
+        <h2>Especiais</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chapa-terapya.jpg" data-full="img/chapa-terapya.webp" alt="Chapa Terapya Mista Pequena"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chapa Terapya Mista — Pequena</h3><span class="prod-price">R$ 125,00</span></div>
+            <p class="prod-desc">400g de Picanha Argentina, 200g de Frango, Queijo e Bacon, 200g de Mandioca Cozida na Manteiga de Garrafa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chapa-terapya.jpg" data-full="img/chapa-terapya.webp" alt="Chapa Terapya Mista Média"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chapa Terapya Mista — Média</h3><span class="prod-price">R$ 150,00</span></div>
+            <p class="prod-desc">600g de Picanha Argentina, 300g de Frango, Queijo e Bacon, 300g de Mandioca Cozida na Manteiga de Garrafa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chapa-mesa.jpg" data-full="img/chapa-mesa.webp" alt="Chapa Terapya Mista Grande"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chapa Terapya Mista — Grande</h3><span class="prod-price">R$ 280,00</span></div>
+            <p class="prod-desc">900g de Picanha Argentina, 300g de Batata Artesanal com Queijo e Bacon, 300g de Mandioca Cozida na Manteiga de Garrafa.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ENTRADAS -->
+    <section class="cat-section reveal" id="entradas">
+      <div class="cat-heading">
+        <div class="eyebrow">Para começar</div>
+        <h2>Entradas</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/croquete-costela.jpg" data-full="img/cardapio/croquete-costela.jpg" alt="Croquete de Costela" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Croquete de Costela</h3><span class="prod-price">R$ 44,90</span></div>
+            <p class="prod-desc">9 unidades. Croquete de costela crocante com queijo e molho especial da casa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/pastel-angu.jpg" data-full="img/cardapio/pastel-angu.jpg" alt="Pastel de Angu" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Pastel de Angu</h3><span class="prod-price">R$ 42,00</span></div>
+            <p class="prod-desc">4 unidades. Alho Pará com requeijão, palmito com queijo, carne seca com requeijão, frango com requeijão.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/carne-panela.jpg" data-full="img/cardapio/carne-panela.jpg" alt="Carne de Panela" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Carne de Panela</h3><span class="prod-price">R$ 45,00</span></div>
+            <p class="prod-desc">Carne de panela defumada com batata bolinha, acompanha torrada.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/torresmo.jpg" data-full="img/torresmo.webp" alt="Torresmo da Casa"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Torresmo da Casa</h3><span class="prod-price">R$ 54,90</span></div>
+            <p class="prod-desc">Torresmo crocante servido com limão.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORÇÕES -->
+    <section class="cat-section reveal" id="porcoes">
+      <div class="cat-heading">
+        <div class="eyebrow">Feitas na chapa</div>
+        <h2>Porções</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/costelinha.jpg" data-full="img/cardapio/costelinha.jpg" alt="Costelinha Terapya" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Costelinha Terapya</h3><span class="prod-price">R$ 61 / R$ 104</span></div>
+            <p class="prod-desc">P (400g) R$ 61,00 · G (800g) R$ 104,00. Defumada com molho barbecue caseiro, acompanha batata artesanal, mussarela e cheddar.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chorizo-terapya.jpg" data-full="img/cardapio/chorizo-terapya.jpg" alt="Chorizo Terapya" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chorizo Terapya</h3><span class="prod-price">R$ 97,00</span></div>
+            <p class="prod-desc">Rolo de chorizo na brasa com batata frita artesanal e queijo.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/familia.jpg" data-full="img/cardapio/familia.jpg" alt="Família Terapya" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Família Terapya</h3><span class="prod-price">R$ 156,00</span></div>
+            <p class="prod-desc">Contra filé acebolado, filé de frango ao catupiry, torresmo, lombo e coração de galinha, com batata artesanal, queijo e cheddar.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/tilapia.jpg" data-full="img/cardapio/tilapia.jpg" alt="Filé de Tilápia" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Filé de Tilápia</h3><span class="prod-price">R$ 55 / R$ 95</span></div>
+            <p class="prod-desc">P (400g) R$ 55,00 · G (900g) R$ 95,00. Com molho da casa, acompanha batata frita artesanal.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/fritas.jpg" data-full="img/cardapio/fritas.jpg" alt="Fritas Artesanais" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Fritas Artesanais</h3><span class="prod-price">R$ 45,00</span></div>
+            <p class="prod-desc">Batata frita acompanhada de queijo, bacon e cheddar.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- REFEIÇÕES -->
+    <section class="cat-section reveal" id="refeicoes">
+      <div class="cat-heading">
+        <div class="eyebrow">Pratos principais</div>
+        <h2>Refeições</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/picanha-400.jpg" data-full="img/cardapio/picanha-400.jpg" alt="Picanha Argentina 400g" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Picanha Argentina 400g</h3><span class="prod-price">R$ 148,00</span></div>
+            <p class="prod-desc">2 a 3 pessoas. Arroz ao alho, vinagrete, farofa da casa, tropeiro, mandioca na manteiga de garrafa, fritas, queijo e bacon.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/picanha-600.jpg" data-full="img/cardapio/picanha-600.jpg" alt="Picanha Família 600g" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Picanha Família 600g</h3><span class="prod-price">R$ 173,00</span></div>
+            <p class="prod-desc">4 pessoas. Arroz ao alho, vinagrete, farofa da casa, tropeiro, mandioca na manteiga de garrafa, fritas, queijo e bacon.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chorizo-500.jpg" data-full="img/cardapio/chorizo-500.jpg" alt="Chorizo 500g" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chorizo 500g</h3><span class="prod-price">R$ 130,00</span></div>
+            <p class="prod-desc">Chorizo na brasa, arroz ao alho, vinagrete, farofa da casa, tropeiro, mandioca na manteiga de garrafa, fritas, queijo e bacon.</p>
+          </div>
+        </article>
+      </div>
+      <div class="note-card">Taxa de serviço opcional de 10%. Cobramos couvert artístico de R$ 5,00 em dias de música ao vivo.</div>
+    </section>
+
+    <!-- GUARNIÇÕES -->
+    <section class="cat-section reveal" id="guarnicoes">
+      <div class="cat-heading">
+        <div class="eyebrow">Para completar</div>
+        <h2>Guarnições</h2>
+      </div>
+      <div class="compact-list">
+        <div class="compact-row"><strong>Abacaxi com sal e raspas de limão</strong><span class="price">R$ 9,00</span></div>
+        <div class="compact-row"><strong>Arroz branco</strong><span class="price">R$ 13,00</span></div>
+        <div class="compact-row"><strong>Arroz ao alho</strong><span class="price">R$ 15,00</span></div>
+        <div class="compact-row"><strong>Tropeiro</strong><span class="price">R$ 18,00</span></div>
+        <div class="compact-row"><strong>Vinagrete</strong><span class="price">R$ 12,00</span></div>
+        <div class="compact-row"><strong>Farofa</strong><span class="price">R$ 10,00</span></div>
+      </div>
+    </section>
+
+    <!-- DRINKS ESPECIAIS -->
+    <section class="cat-section reveal" id="drinks">
+      <div class="cat-heading">
+        <div class="eyebrow">A assinatura da casa</div>
+        <h2>Drinks de terapia</h2>
+        <p>Rivotril, Ritalina Red, Alprazolam Spritz... cada um com sua própria dose de bom humor.</p>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/rivotril.jpg" data-full="img/cardapio/rivotril.jpg" alt="Rivotril" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Rivotril</h3><span class="prod-price">R$ 32,00</span></div>
+            <p class="prod-tagline">"Em qualquer dose, ele vai virar o seu problema."</p>
+            <p class="prod-desc">Whisky, syrup de mel, suco de limão e espuma de gengibre.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/dr-freud.jpg" data-full="img/cardapio/dr-freud.jpg" alt="Dr. Freud" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Dr. Freud</h3><span class="prod-price">R$ 34,00</span></div>
+            <p class="prod-tagline">"Complexo, cheio de camadas e adora analisar você."</p>
+            <p class="prod-desc">Uvas frescas, Licor 43, Vodka Smirnoff, suco de limão e folhas de hortelã.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/terapya-intensiva.jpg" data-full="img/cardapio/terapya-intensiva.jpg" alt="Terapya Intensiva" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Terapya Intensiva</h3><span class="prod-price">R$ 25,00</span></div>
+            <p class="prod-tagline">"Todos sabíamos, indicado para sessões prolongadas."</p>
+            <p class="prod-desc">Cachaça, uva, pera, açúcar e suco de limão siciliano.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/ritalina-red.jpg" data-full="img/cardapio/ritalina-red.jpg" alt="Ritalina Red"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Ritalina Red</h3><span class="prod-price">R$ 25,00</span></div>
+            <p class="prod-tagline">"Estimulante, colorido e cheio de energia."</p>
+            <p class="prod-desc">Rum branco, suco de limão, syrup de morango, Monin e folhas de hortelã.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/seakalm.jpg" data-full="img/cardapio/seakalm.jpg" alt="Seakalm" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Seakalm</h3><span class="prod-price">R$ 25,00</span></div>
+            <p class="prod-desc">Vodka, maracujá, suco de laranja e syrup de manga.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/alprazolam-spritz.jpg" data-full="img/cardapio/alprazolam-spritz.jpg" alt="Alprazolam Spritz" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Alprazolam Spritz</h3><span class="prod-price">R$ 32,00</span></div>
+            <p class="prod-desc">Aperol, espumante e água com gás.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/calma-clinica.jpg" data-full="img/cardapio/calma-clinica.jpg" alt="Calma Clínica" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Calma Clínica <small style="opacity:.55">(sem álcool)</small></h3><span class="prod-price">R$ 16,00</span></div>
+            <p class="prod-desc">Suco de limão, hortelã, xarope de açúcar e água com gás.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/efeito-placebo.jpg" data-full="img/cardapio/efeito-placebo.jpg" alt="Efeito Placebo" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Efeito Placebo</h3><span class="prod-price">R$ 20,00</span></div>
+            <p class="prod-tagline">"Você acha que vai funcionar... daí funciona."</p>
+            <p class="prod-desc">Cachaça, melaço de cana de açúcar e mix de limão.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/antidepressiva.jpg" data-full="img/cardapio/antidepressiva.jpg" alt="Antidepressiva" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Antidepressiva</h3><span class="prod-price">R$ 25,00</span></div>
+            <p class="prod-desc">Vinho tinto, syrup de limão siciliano e frutas vermelhas.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/esquizofrenico.jpg" data-full="img/cardapio/esquizofrenico.jpg" alt="Esquizofrênico" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Esquizofrênico</h3><span class="prod-price">R$ 35,00</span></div>
+            <p class="prod-tagline">"Combinação ousada e imprevisível de sabores."</p>
+            <p class="prod-desc">Licor de whisky sabor mel, syrup de tangerina, maracujá e suco de laranja.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/serotonina.jpg" data-full="img/cardapio/serotonina.jpg" alt="Serotonina" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Serotonina</h3><span class="prod-price">R$ 35,00</span></div>
+            <p class="prod-desc">Gin, syrup de gengibre, suco de limão e água tônica.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/ginzepam.jpg" data-full="img/cardapio/ginzepam.jpg" alt="Ginzepam" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Ginzepam</h3><span class="prod-price">R$ 32,00</span></div>
+            <p class="prod-desc">Gin, maçã e água tônica.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/psicologo.jpg" data-full="img/cardapio/psicologo.jpg" alt="Psicólogo" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Psicólogo</h3><span class="prod-price">R$ 27,00</span></div>
+            <p class="prod-desc">Vodka, Monin maçã verde, suco de limão e soda.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/fluxo-cognitivo.jpg" data-full="img/cardapio/fluxo-cognitivo.jpg" alt="Fluxo Cognitivo" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Fluxo Cognitivo <small style="opacity:.55">(sem álcool)</small></h3><span class="prod-price">R$ 16,00</span></div>
+            <p class="prod-desc">Monin de amora, suco de laranja e soda.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHOPP & CERVEJAS -->
+    <section class="cat-section reveal" id="chopp">
+      <div class="cat-heading">
+        <div class="eyebrow">Geladinhas</div>
+        <h2>Chopp & cervejas</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chopp-amstel-500.jpg" data-full="img/cardapio/chopp-amstel-500.jpg" alt="Chopp Amstel 300 ml" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chopp Amstel — 300 ml</h3><span class="prod-price">R$ 8,00</span></div>
+            <p class="prod-desc">Tirado na hora, trincando de gelado, com colarinho cremoso.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/chopp-amstel-500.jpg" data-full="img/cardapio/chopp-amstel-500.jpg" alt="Chopp Amstel 500 ml" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Chopp Amstel — 500 ml</h3><span class="prod-price">R$ 11,00</span></div>
+            <p class="prod-desc">A dose generosa do chopp da casa, pra quem não quer levantar da mesa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/heineken-ln.jpg" data-full="img/bebidas/heineken-ln.jpg" alt="Long Neck Heineken" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Long Neck Heineken</h3><span class="prod-price">R$ 13,00</span></div>
+            <p class="prod-desc">Puro malte lager, servida estupidamente gelada.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/heineken-zero.jpg" data-full="img/cardapio/heineken-zero.jpg" alt="Long Neck Heineken 0.0" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Long Neck Heineken 0.0</h3><span class="prod-price">R$ 13,00</span></div>
+            <p class="prod-desc">Todo o sabor da Heineken, zero álcool.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/amstel-ultra.jpg" data-full="img/cardapio/amstel-ultra.jpg" alt="Long Neck Amstel Ultra" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Long Neck Amstel Ultra</h3><span class="prod-price">R$ 10,00</span></div>
+            <p class="prod-desc">Leve, refrescante e com menos calorias.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/heineken-600.jpg" data-full="img/cardapio/heineken-600.jpg" alt="Cerveja Heineken 600 ml" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Cerveja Heineken — 600 ml</h3><span class="prod-price">R$ 17,00</span></div>
+            <p class="prod-desc">A garrafa clássica pra dividir com a mesa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/amstel-600.jpg" data-full="img/cardapio/amstel-600.jpg" alt="Cerveja Amstel 600 ml" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Cerveja Amstel — 600 ml</h3><span class="prod-price">R$ 12,00</span></div>
+            <p class="prod-desc">Lager encorpada na medida, perfeita pra acompanhar a chapa.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DOSES -->
+    <section class="cat-section reveal" id="doses">
+      <div class="cat-heading">
+        <div class="eyebrow">Puro ou de mistura</div>
+        <h2>Doses</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/vodka.jpg" data-full="img/bebidas/vodka.jpg" alt="Vodka Smirnoff" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Vodka Smirnoff</h3><span class="prod-price">R$ 12,00</span></div>
+            <p class="prod-desc">Pura, gelada ou na base do seu drink favorito.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/cachaca.jpg" data-full="img/bebidas/cachaca.jpg" alt="Cachaça da Roça" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Cachaça da Roça</h3><span class="prod-price">R$ 8,00</span></div>
+            <p class="prod-desc">A mineira de respeito, do jeitinho que a roça faz.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/gin.jpg" data-full="img/bebidas/gin.jpg" alt="Gin Tanqueray" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Gin Tanqueray</h3><span class="prod-price">R$ 17,00</span></div>
+            <p class="prod-desc">London Dry com zimbro marcante, seco e elegante.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/campari.jpg" data-full="img/bebidas/campari.jpg" alt="Campari" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Campari</h3><span class="prod-price">R$ 11,00</span></div>
+            <p class="prod-desc">O amargo italiano de cor rubi, com notas cítricas e de ervas.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/rum.jpg" data-full="img/bebidas/rum.jpg" alt="Rum ouro ou prata" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Rum <small style="opacity:.55">(ouro ou prata)</small></h3><span class="prod-price">R$ 10,00</span></div>
+            <p class="prod-desc">Prata, leve e limpo; ouro, mais redondo e amadeirado. Você escolhe.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/tequila.jpg" data-full="img/bebidas/tequila.jpg" alt="Tequila" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Tequila</h3><span class="prod-price">R$ 17,00</span></div>
+            <p class="prod-desc">Com sal e limão, do jeito certo.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/licor-43.jpg" data-full="img/bebidas/licor-43.jpg" alt="Licor 43" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Licor 43</h3><span class="prod-price">R$ 25,00</span></div>
+            <p class="prod-desc">O licor espanhol de baunilha e cítricos, doce e aveludado.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/red-label.jpg" data-full="img/bebidas/red-label.jpg" alt="Whisky Red Label" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Whisky Red Label</h3><span class="prod-price">R$ 17,00</span></div>
+            <p class="prod-desc">Blended escocês vibrante, com toque defumado.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/jack.jpg" data-full="img/bebidas/jack.jpg" alt="Whisky Jack Daniel's" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Whisky Jack Daniel's</h3><span class="prod-price">R$ 22,00</span></div>
+            <p class="prod-desc">Tennessee whiskey filtrado no carvão de bordo, suave e marcante.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMBOS -->
+    <section class="cat-section reveal" id="combos">
+      <div class="cat-heading">
+        <div class="eyebrow">Pra dividir</div>
+        <h2>Combos</h2>
+      </div>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/heineken-ln.jpg" data-full="img/bebidas/heineken-ln.jpg" alt="Combo Heineken" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Combo Heineken</h3><span class="prod-price">R$ 69,00</span></div>
+            <p class="prod-desc">6 long necks Heineken bem geladas pra dividir com a mesa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/amstel-ultra.jpg" data-full="img/cardapio/amstel-ultra.jpg" alt="Combo Amstel Ultra" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Combo Amstel Ultra</h3><span class="prod-price">R$ 55,00</span></div>
+            <p class="prod-desc">6 long necks Amstel Ultra bem geladas pra dividir com a mesa.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/combo-gin-tonica.jpg" data-full="img/bebidas/combo-gin-tonica.jpg" alt="Gin Tanqueray + 5 Tônicas" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Gin Tanqueray + 5 Tônicas</h3><span class="prod-price">R$ 230,00</span></div>
+            <p class="prod-desc">Garrafa de Tanqueray acompanhada de 5 águas tônicas.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/combo-gin-redbull.jpg" data-full="img/bebidas/combo-gin-redbull.jpg" alt="Gin Tanqueray + 5 Red Bull" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Gin Tanqueray + 5 Red Bull</h3><span class="prod-price">R$ 250,00</span></div>
+            <p class="prod-desc">Garrafa de Tanqueray com 5 Red Bull pra noite render.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/combo-redlabel.jpg" data-full="img/bebidas/combo-redlabel.jpg" alt="Red Label + 5 Red Bull" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Red Label + 5 Red Bull</h3><span class="prod-price">R$ 250,00</span></div>
+            <p class="prod-desc">Garrafa de Red Label acompanhada de 5 Red Bull.</p>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-media"><img src="img/cardapio/thumb/combo-jack.jpg" data-full="img/bebidas/combo-jack.jpg" alt="Jack Daniel's + 5 Red Bull" loading="lazy"></div>
+          <div class="prod-info">
+            <div class="prod-top"><h3>Jack Daniel's + 5 Red Bull</h3><span class="prod-price">R$ 325,00</span></div>
+            <p class="prod-tagline">Sabor apple</p>
+            <p class="prod-desc">Garrafa de Jack Daniel's Apple com 5 Red Bull.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SUCOS & SEM ÁLCOOL -->
+    <section class="cat-section reveal" id="sucos">
+      <div class="cat-heading">
+        <div class="eyebrow">Sem pressa</div>
+        <h2>Sucos & sem álcool</h2>
+      </div>
+      <div class="compact-list">
+        <div class="compact-row"><div><strong>Laranjada</strong><span class="sub">laranja com morango</span></div><span class="price">R$ 14,00</span></div>
+        <div class="compact-row"><strong>Suco de laranja</strong><span class="price">R$ 12,00</span></div>
+        <div class="compact-row"><strong>Suco de limão</strong><span class="price">R$ 12,00</span></div>
+        <div class="compact-row"><div><strong>Refrigerante</strong><span class="sub">Coca-Cola</span></div><span class="price">R$ 7,00</span></div>
+        <div class="compact-row"><div><strong>Refrigerante</strong><span class="sub">Fanta, sabores</span></div><span class="price">R$ 7,00</span></div>
+        <div class="compact-row"><strong>Água tônica</strong><span class="price">R$ 7,00</span></div>
+        <div class="compact-row"><div><strong>Água</strong><span class="sub">sem gás</span></div><span class="price">R$ 5,00</span></div>
+        <div class="compact-row"><div><strong>Água</strong><span class="sub">com gás</span></div><span class="price">R$ 5,00</span></div>
+        <div class="compact-row"><div><strong>Energético</strong><span class="sub">Red Bull</span></div><span class="price">R$ 15,00</span></div>
+      </div>
+    </section>
+
+    <div class="menu-cta reveal">
+      <h2>Bora reservar uma mesa?</h2>
+      <p>Fale com a gente no WhatsApp e garanta seu lugar no Terapya.</p>
+      <a href="https://wa.me/5531985220592?text=Ol%C3%A1!%20Vi%20o%20card%C3%A1pio%20e%20quero%20reservar%20uma%20mesa%20no%20Terapya." target="_blank" rel="noopener">Reservar pelo WhatsApp ↗</a>
+    </div>
+
+    <footer class="menu-footer">
+      Preços sujeitos a alteração sem aviso prévio. Taxa de serviço opcional de 10%.<br>
+      Algumas fotos podem ser genéricas e meramente ilustrativas.<br>
+      © 2026 TERAPYA BAR — Rua José Trindade, 5, Bauxita, Ouro Preto/MG
+    </footer>
+  </main>
+
+  <!-- Menu inferior mobile (estilo Instagram) -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Menu principal">
+    <a href="index.html" style="--c:#22D3EE"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg><span class="bottom-nav__label">Início</span></a>
+    <a href="#especiais" data-spy="especiais entradas porcoes refeicoes guarnicoes" style="--c:#FF8A1E"><svg viewBox="0 0 24 24"><path d="M7 2v20M4 2v6a3 3 0 0 0 6 0V2M17 22V2c-2.5 1-4 4-4 8v4h4"/></svg><span class="bottom-nav__label">Comidas</span></a>
+    <a href="#drinks" class="bottom-nav__center" data-spy="drinks doses"><span class="bottom-nav__logo"><svg viewBox="0 0 32 32"><path class="glass" d="M5 8h22L16 19.5Z"/><path class="glass" d="M16 19.5V27M11 27h10"/><path class="stick" d="M23.5 3.5 17.5 12"/><circle class="olive" cx="21.6" cy="6.3" r="2.3"/></svg></span><span class="bottom-nav__label">Drinks</span></a>
+    <a href="#chopp" data-spy="chopp" style="--c:#2FD36F"><svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 1.5h4v1.2h-.4v4.1c0 1.4 2.4 2.5 2.4 5.2V21a1.6 1.6 0 0 1-1.6 1.6H9.6A1.6 1.6 0 0 1 8 21v-9c0-2.7 2.4-3.8 2.4-5.2V2.7H10Z" fill="#0B7A3B" stroke="#4BE08A" stroke-width="1.1"/><rect x="8.5" y="12.2" width="7" height="6.2" fill="#F5F5F0" stroke="none"/><polygon points="12,12.7 12.56,14.43 14.38,14.43 12.91,15.5 13.47,17.22 12,16.16 10.53,17.22 11.09,15.5 9.62,14.43 11.44,14.43" fill="#E2231A" stroke="none"/></svg><span class="bottom-nav__label">Cervejas</span></a>
+    <a href="#combos" data-spy="combos sucos" style="--c:#FF4D6D"><svg class="nav-ico nav-ico--dupla" viewBox="0 0 32 28" aria-hidden="true"><rect x="6.2" y="1" width="5.6" height="3.4" rx=".7" fill="#D7DCE4" stroke="none"/><path d="M6.8 4.4h4.4v2.2c0 1 3.9 1.6 3.9 4.6V25a1.5 1.5 0 0 1-1.5 1.5H4.4A1.5 1.5 0 0 1 2.9 25V11.2c0-3 3.9-3.6 3.9-4.6Z" fill="#0F5A35" stroke="#5FD08F" stroke-width="1.1"/><rect x="3.4" y="16.2" width="11.2" height="6.2" fill="#EFE6CC" stroke="none"/><text x="9" y="20.4" text-anchor="middle" textLength="10.2" lengthAdjust="spacingAndGlyphs" font-family="Manrope,Arial,sans-serif" font-size="3" font-weight="800" fill="#0F3D26" stroke="none">TANQUERAY</text><circle cx="9" cy="12.6" r="3" fill="#D81E2C" stroke="#F2C14E" stroke-width=".6"/><path d="M19.5 8.5l1-2.2h7l1 2.2v17l-1 1.2h-7l-1-1.2Z" fill="#D7DCE4" stroke="#EEF1F5" stroke-width=".9"/><path d="M19.5 8.5l1-2.2H24v20.4h-3.5l-1-1.2Z" fill="#1E3F9E" stroke="none"/><circle cx="24" cy="16.5" r="3.5" fill="#FFC400" stroke="none"/><path d="M20.4 18.6l2.9-2.6-.3 2.6ZM27.6 18.6l-2.9-2.6.3 2.6Z" fill="#E2231A" stroke="none"/></svg><span class="bottom-nav__label">Combos</span></a>
+  </nav>
+  <script>
+    /* Menu inferior: marca o ícone da seção visível na tela */
+    (function(){
+      var links = document.querySelectorAll('#bottomNav a[data-spy]');
+      if (!links.length || !('IntersectionObserver' in window)) return;
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          links.forEach(function(a){
+            a.classList.toggle('active', a.dataset.spy.split(' ').indexOf(entry.target.id) > -1);
+          });
+        });
+      }, {rootMargin:'-45% 0px -50% 0px'});
+      links.forEach(function(a){
+        a.dataset.spy.split(' ').forEach(function(id){
+          var sec = document.getElementById(id);
+          if (sec) obs.observe(sec);
+        });
+      });
+    })();
+  </script>
+  <div class="pm" id="pm" aria-hidden="true">
+    <div class="pm-backdrop" data-close></div>
+    <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+      <button class="pm-close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="pm-media" id="pmMedia"></div>
+      <div class="pm-body">
+        <div class="pm-eyebrow" id="pmCat"></div>
+        <h3 id="pmTitle"></h3>
+        <p class="pm-tagline" id="pmTag"></p>
+        <div class="pm-rule"></div>
+        <p class="pm-desc" id="pmDesc"></p>
+        <div class="pm-foot">
+          <div><span class="pm-label">Valor</span><span class="pm-price" id="pmPrice"></span></div>
+          <div class="pm-mark"><img src="img/logo.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Extrai as cores neon do logo ao vivo, igual ao index
+    function extractLogoColors(imgEl){
+      try{
+        const size = 48;
+        const canvas = document.createElement('canvas');
+        canvas.width = size; canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(imgEl, 0, 0, size, size);
+        const data = ctx.getImageData(0, 0, size, size).data;
+        let cool = null, coolSat = -1, warm = null, warmSat = -1;
+        for(let i = 0; i < data.length; i += 4){
+          const r = data[i], g = data[i+1], b = data[i+2], a = data[i+3];
+          if(a < 200) continue;
+          const max = Math.max(r,g,b), min = Math.min(r,g,b);
+          const sat = max - min;
+          if(max < 60) continue;
+          if(b >= r){ if(sat > coolSat){ coolSat = sat; cool = `rgb(${r},${g},${b})`; } }
+          else { if(sat > warmSat){ warmSat = sat; warm = `rgb(${r},${g},${b})`; } }
+        }
+        const root = document.documentElement.style;
+        if(cool) root.setProperty('--logo-c1', cool);
+        if(warm) root.setProperty('--logo-c2', warm);
+      }catch(e){}
+    }
+    const logoImg = document.querySelector('img[src="img/logo.jpg"]');
+    if(logoImg){
+      if(logoImg.complete && logoImg.naturalWidth) extractLogoColors(logoImg);
+      else logoImg.addEventListener('load', () => extractLogoColors(logoImg), {once:true});
+    }
+
+    // Reveal on scroll
+    const revealEls = [...document.querySelectorAll('.reveal')];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(el => observer.observe(el));
+
+    // Category nav: active state on scroll
+    const navLinks = [...document.querySelectorAll('#catNav a')];
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href')));
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, {rootMargin:'-40% 0px -50% 0px'});
+    sections.forEach(sec => sec && navObserver.observe(sec));
+
+    // Detalhe do produto: a imagem do card expande até o painel
+    const pm = document.getElementById('pm');
+    const pmMedia = document.getElementById('pmMedia');
+    const pmClose = pm.querySelector('.pm-close');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let activeCard = null, busy = false;
+
+    function rectStyle(r, radius){
+      return {left:r.left+'px', top:r.top+'px', width:r.width+'px', height:r.height+'px', borderRadius:radius};
+    }
+
+    // Clona a mídia de origem num elemento fixo e anima de um retângulo ao outro
+    function flyMedia(fromEl, toEl, fromRadius, toRadius, reverse){
+      const from = fromEl.getBoundingClientRect(), to = toEl.getBoundingClientRect();
+      const ghost = (reverse ? toEl : fromEl).cloneNode(true);
+      ghost.classList.add('pm-ghost');
+      ghost.removeAttribute('id');
+      const ph = ghost.querySelector('.ph, .pm-ph');
+      Object.assign(ghost.style, rectStyle(from, fromRadius), {display:'grid', placeItems:'center', visibility:'visible'});
+      document.body.appendChild(ghost);
+      const frames = [rectStyle(from, fromRadius), rectStyle(to, toRadius)];
+      const opts = {duration: reduceMotion.matches ? 380 : 620, easing:'cubic-bezier(.2,.8,.2,1)', fill:'forwards'};
+      if(ph) ph.animate([{fontSize: reverse ? '120px' : '30px'}, {fontSize: reverse ? '30px' : '120px'}], opts);
+      return ghost.animate(frames, opts).finished.then(() => ghost);
+    }
+
+    function fillModal(card){
+      const media = card.querySelector('.prod-media');
+      const img = media.querySelector('img');
+      pmMedia.innerHTML = '';
+      pmMedia.style.removeProperty('--pm-bg');
+      if(img){
+        const big = document.createElement('img');
+        big.src = img.dataset.full || img.currentSrc || img.src;   // miniatura é só o recorte do card
+        big.alt = img.alt;
+        if(getComputedStyle(img).objectFit === 'contain') big.style.padding = '28px 0 40px';
+        pmMedia.style.setProperty('--pm-bg', `url("${big.src}")`);
+        pmMedia.appendChild(big);
+      }else{
+        const ph = document.createElement('span');
+        ph.className = 'pm-ph';
+        ph.textContent = media.textContent.trim();
+        pmMedia.appendChild(ph);
+      }
+      const h3 = card.querySelector('h3');
+      document.getElementById('pmTitle').innerHTML = h3.innerHTML;
+      document.getElementById('pmPrice').textContent = card.querySelector('.prod-price').textContent;
+      const tag = card.querySelector('.prod-tagline');
+      document.getElementById('pmTag').textContent = tag ? tag.textContent : '';
+      const desc = card.querySelector('.prod-desc');
+      document.getElementById('pmDesc').textContent = desc ? desc.textContent : '';
+      const sec = card.closest('.cat-section');
+      document.getElementById('pmCat').textContent = sec ? sec.querySelector('h2').textContent : 'Terapya';
+    }
+
+    async function openProduct(card){
+      if(busy || activeCard) return;
+      busy = true; activeCard = card;
+      fillModal(card);
+      const scrollbar = innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = scrollbar ? scrollbar + 'px' : '';
+      document.body.classList.add('pm-lock');
+      pm.setAttribute('aria-hidden', 'false');
+      pm.classList.add('open');
+      pmClose.focus({preventScroll:true});
+
+      pmMedia.classList.add('hidden');
+      card.classList.add('is-source');
+      const ghost = await flyMedia(card.querySelector('.prod-media'), pmMedia, '14px', '28px 28px 0 0', false);
+      pmMedia.classList.remove('hidden');
+      ghost.remove();
+      busy = false;
+    }
+
+    async function closeProduct(){
+      if(busy || !activeCard) return;
+      busy = true;
+      const card = activeCard;
+      const src = card.querySelector('.prod-media');
+      const visible = src.getBoundingClientRect().bottom > 0 && src.getBoundingClientRect().top < innerHeight;
+      let flight = null;
+      if(visible){
+        flight = flyMedia(pmMedia, src, '28px 28px 0 0', '14px', true);
+        pmMedia.classList.add('hidden');
+      }
+      pm.classList.remove('open');
+      pm.setAttribute('aria-hidden', 'true');
+      if(flight){ const ghost = await flight; ghost.remove(); }
+      else await new Promise(r => setTimeout(r, 300));
+      card.classList.remove('is-source');
+      pmMedia.classList.remove('hidden');
+      document.body.classList.remove('pm-lock');
+      document.body.style.paddingRight = '';
+      card.focus({preventScroll:true});
+      activeCard = null; busy = false;
+    }
+
+    document.querySelectorAll('.prod-card').forEach(card => {
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-haspopup', 'dialog');
+      card.addEventListener('click', () => openProduct(card));
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openProduct(card); }
+      });
+    });
+    pm.addEventListener('click', e => { if(e.target.closest('[data-close]')) closeProduct(); });
+    document.addEventListener('keydown', e => {
+      if(!activeCard) return;
+      if(e.key === 'Escape') closeProduct();
+      if(e.key === 'Tab'){ e.preventDefault(); pmClose.focus(); }
+    });
+  </script>
+</body>
+</html>
